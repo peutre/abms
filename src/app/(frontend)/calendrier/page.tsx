@@ -130,19 +130,36 @@ export default async function CalendrierPage() {
                 return (
                   <article key={event.id} className="card overflow-hidden">
                     <div className="flex flex-col sm:flex-row">
-                      {/* Bloc date (calendrier visuel) */}
-                      <div className={`flex-shrink-0 w-full sm:w-28 flex sm:flex-col items-center justify-center
-                                       p-4 sm:p-5 text-white
+                      {/* Bloc date (mini-calendrier) */}
+                      <div className={`flex-shrink-0 w-full sm:w-24 flex flex-row sm:flex-col items-center
+                                       justify-center gap-0 text-white text-center
                                        ${event.event_type === 'mycologie' ? 'bg-terre-600' : 'bg-foret-600'}`}>
-                        <span className="text-sm font-medium uppercase tracking-wide opacity-80 sm:block hidden">
-                          {d.jour}
-                        </span>
-                        <span className="text-3xl sm:text-4xl font-serif font-bold sm:my-1">
-                          {d.numero}
-                        </span>
-                        <span className="text-sm font-medium uppercase tracking-wide opacity-80 ml-2 sm:ml-0">
-                          {d.mois} {d.annee}
-                        </span>
+                        {/* Jour de la semaine — bandeau discret en haut */}
+                        <div className="hidden sm:flex w-full justify-center bg-black/15 py-1.5">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.15em] opacity-90">
+                            {d.jour}
+                          </span>
+                        </div>
+
+                        {/* Version mobile : tout inline */}
+                        <div className="flex sm:hidden items-baseline gap-2 px-4 py-3">
+                          <span className="text-[11px] font-semibold uppercase tracking-wider opacity-80">{d.jour}.</span>
+                          <span className="text-2xl font-serif font-bold">{d.numero}</span>
+                          <span className="text-[11px] font-semibold uppercase tracking-wider opacity-80">{d.mois} {d.annee}</span>
+                        </div>
+
+                        {/* Version desktop : empilé */}
+                        <div className="hidden sm:flex flex-col items-center py-4 gap-0.5">
+                          <span className="text-4xl font-serif font-bold leading-none">
+                            {d.numero}
+                          </span>
+                          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] mt-2 opacity-90">
+                            {d.mois}
+                          </span>
+                          <span className="text-[11px] font-medium opacity-60">
+                            {d.annee}
+                          </span>
+                        </div>
                       </div>
 
                       {/* Contenu */}
