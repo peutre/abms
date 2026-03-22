@@ -59,7 +59,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="px-3 py-2 rounded-md text-[13px] font-normal tracking-wide text-gray-600
+                    className="px-3 py-2 rounded-md text-[14.5px] font-normal tracking-[0.01em] text-gray-600
                                hover:bg-foret-50 hover:text-foret-700 whitespace-nowrap
                                no-underline transition-colors duration-150 block"
                   >
