@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { fr } from '@payloadcms/translations/languages/fr'
 import sharp from 'sharp'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -25,6 +26,12 @@ export default buildConfig({
       description: 'Interface d\'administration du site de l\'Association Botanique et Mycologique de la Siagne',
     },
     components: {},
+  },
+
+  // Interface admin entièrement en français
+  i18n: {
+    supportedLanguages: { fr },
+    fallbackLanguage: 'fr',
   },
 
   collections: [
