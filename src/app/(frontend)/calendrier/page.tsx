@@ -3,6 +3,8 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { Metadata } from 'next'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Calendrier des sorties — ABMS',
   description: 'Toutes les sorties botaniques et mycologiques de l\'ABMS06. Agenda des prochaines activités.',
@@ -59,6 +61,7 @@ const STATUS_LABELS: Record<string, { label: string; class: string }> = {
 export default async function CalendrierPage() {
   let upcomingEvents: any[] = []
   let pastEvents: any[] = []
+  let errorMessage: string | null = null
 
   try {
     const payload = await getPayload({ config })
@@ -79,8 +82,9 @@ export default async function CalendrierPage() {
       limit: 20,
     })
     pastEvents = past.docs
-  } catch {
-    // Affichage sans données en développement
+  } catch (err) {
+    errorMessage = err instanceof Error ? err.message : 'Erreur inconnue'
+    console.error('[Calendrier] Erreur de chargement :', err)
   }
 
   return (
@@ -105,7 +109,13 @@ export default async function CalendrierPage() {
             Prochaines sorties
           </h2>
 
-          {upcomingEvents.length === 0 ? (
+          {errorMessage ? (
+            <div className="card p-10 text-center text-red-600">
+              <div className="text-5xl mb-4" aria-hidden="true">⚠️</div>
+              <p className="text-xl font-semibold">Impossible de charger les sorties.</p>
+              <p className="mt-2 text-sm text-gray-500 font-mono">{errorMessage}</p>
+            </div>
+          ) : upcomingEvents.length === 0 ? (
             <div className="card p-10 text-center text-gray-500">
               <div className="text-5xl mb-4" aria-hidden="true">📅</div>
               <p className="text-xl">Aucune sortie prévue pour l&apos;instant.</p>
