@@ -790,14 +790,14 @@ export default async function HomePage() {
             color: 'rgba(255,255,255,0.92)',
             lineHeight: 1.55, maxWidth: '22ch', margin: '0 auto 1.5rem',
           }}>
-            La nature est le plus grand livre jamais écrit, et chaque plante en est une page.
+            Regardez profondément dans la nature et alors vous comprendrez tout beaucoup mieux.
           </blockquote>
           <p style={{
             fontFamily: 'Inter, sans-serif', fontSize: '0.825rem',
             fontWeight: 600, letterSpacing: '0.12em',
             textTransform: 'uppercase', color: '#8fb85a',
           }}>
-            — Esprit naturaliste ABMS
+            — Albert Einstein
           </p>
         </div>
       </section>
