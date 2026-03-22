@@ -11,13 +11,14 @@ export default function Footer() {
           {/* Colonne 1 : Présentation */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image
-                src="/logo.png"
-                alt="Logo ABMS"
-                width={48}
-                height={48}
-                className="brightness-0 invert opacity-90"
-              />
+              <div className="bg-white rounded-lg p-1">
+                <Image
+                  src="/logo.png"
+                  alt="Logo ABMS"
+                  width={44}
+                  height={44}
+                />
+              </div>
               <h2 className="font-serif text-xl font-semibold text-white">
                 ABMS
               </h2>
