@@ -54,12 +54,13 @@ export default function Header() {
 
           {/* Navigation desktop */}
           <nav aria-label="Navigation principale" className="hidden lg:block">
-            <ul className="flex items-center gap-1" role="list">
+            <ul className="flex items-center gap-0.5" role="list">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-foret-50 hover:text-foret-700
+                    className="px-3 py-2 rounded-md text-[13px] font-normal tracking-wide text-gray-600
+                               hover:bg-foret-50 hover:text-foret-700 whitespace-nowrap
                                no-underline transition-colors duration-150 block"
                   >
                     {link.label}
